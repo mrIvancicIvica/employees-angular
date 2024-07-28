@@ -1,0 +1,62 @@
+<div class="container">
+  <div class="search">
+    <div class='inputSelect'>
+      <input
+        class="input"
+        type="text"
+        id="searchTerm"
+        name="searchTerm"
+        [(ngModel)]="searchTerm"
+        placeholder="start search"
+        (ngModelChange)="filterUsers()"
+      />
+      <select
+        class="select"
+        [(ngModel)]="selectedProfession"
+        (ngModelChange)="filterUsers()"
+      >
+        <option value="">Please choose an profession</option>
+        <option *ngFor="let option of options" [value]="option.value">
+          {{ option.name }}
+        </option>
+      </select>
+    </div>
+
+    <div class='bttns'>
+      <button class='bttn' (click)="sortByName()">Sort by Name</button>
+      <button class='bttn' (click)="sortByLastname()">Sort by Lastname</button>
+      <button class='bttn' (click)="sortByProfession()">Sort by Profession</button>
+    </div>
+  </div>
+
+  {{ currentPage }}
+
+  <div class="cards">
+    @for (item of paginatedUsers ; track $index) {
+
+    <div>
+      <div *ngIf="item.isVisible" class="card">
+        {{ item.firstName }}
+        {{ item.lastName }}
+        <div class="profession">
+          {{ item.jobTitle }}
+        </div>
+      </div>
+    </div>
+
+    }
+  </div>
+
+  <div class="paginationButtons">
+    <button class='bttn' (click)="goToPage(currentPage - 1)" [disabled]="currentPage === 1">
+      Previous
+    </button>
+    <span>{{ currentPage }} of {{ totalPages }} </span>
+    <button class='bttn'
+      (click)="goToPage(currentPage + 1)"
+      [disabled]="currentPage === totalPages"
+    >
+      Next
+    </button>
+  </div>
+</div>

@@ -1,0 +1,89 @@
+<!-- <input
+  type="text"
+  id="name"
+  name="name"
+  class="form-control"
+  required
+  minlength="4"
+  [(ngModel)]="name"
+  #name="ngModel"
+/>
+<input
+  type="text"
+  id="lastname"
+  name="lastname"
+  class="form-control"
+  required
+  minlength="4"
+  [(ngModel)]="lastname"
+  #name="ngModel"
+/>
+<div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert">
+  <div *ngIf="name.hasError('required')">Name is required.</div>
+</div> -->
+
+<form class='form' [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
+  <div>
+    <input class='input' placeholder='Name' id="name" type="text" formControlName="name" required="" />
+    <div
+      *ngIf="
+        employeeForm.controls['name'].invalid &&
+        (employeeForm.controls['name'].dirty ||
+          employeeForm.controls['name'].touched)
+      "
+    >
+      <small *ngIf="employeeForm.controls['name'].hasError('required')"
+        >Name is required.</small
+      >
+    </div>
+  </div>
+
+  <div>
+    <input class='input' placeholder='Last Name' id="lastName" type="text" formControlName="lastName" />
+    <div
+      *ngIf="
+        employeeForm.controls['lastName'].invalid &&
+        (employeeForm.controls['lastName'].dirty ||
+          employeeForm.controls['lastName'].touched)
+      "
+    >
+      <small *ngIf="employeeForm.controls['lastName'].hasError('required')"
+        >Name is required.</small
+      >
+    </div>
+  </div>
+
+  <div>
+    <input class='input' placeholder='Birthday' id="bDay" type="text" formControlName="bDay" />
+    <div
+      *ngIf="
+        employeeForm.controls['bDay'].invalid &&
+        (employeeForm.controls['bDay'].dirty ||
+          employeeForm.controls['bDay'].touched)
+      "
+    >
+      <small *ngIf="employeeForm.controls['bDay'].hasError('required')"
+        >Name is required.</small
+      >
+    </div>
+  </div>
+
+  <div>
+    <input class='input' placeholder='Position' id="position" type="text" formControlName="position" />
+    <div
+    *ngIf="
+      employeeForm.controls['position'].invalid &&
+      (employeeForm.controls['position'].dirty ||
+        employeeForm.controls['position'].touched)
+    "
+  >
+    <small *ngIf="employeeForm.controls['position'].hasError('required')"
+      >Name is required.</small
+    >
+  </div>
+  </div>
+
+  <button [disabled]="!employeeForm.valid" class="bttn" type="submit">
+    Add Employee
+  </button>
+</form>
