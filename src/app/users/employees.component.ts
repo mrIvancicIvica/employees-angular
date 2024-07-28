@@ -8,8 +8,8 @@ import { NgIf, NgFor } from '@angular/common';
   standalone: true,
   imports: [FormsModule, NgIf, NgFor],
   providers: [UsersService],
-  templateUrl: './users.component.html',
-  styleUrls: ['./users.component.css'],
+  templateUrl: './employees.component.html',
+  styleUrls: ['./employees.component.css'],
 })
 export class UsersComponent {
   users: any[] = [];
