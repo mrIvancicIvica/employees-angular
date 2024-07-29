@@ -23,7 +23,7 @@ export class AddEmployeeComponent {
     this.employeeForm = this.formBuilder.group({
       name: ['', Validators.required],
       lastName: ['', Validators.required],
-      bDay: ['', [Validators.required, Validators.pattern('^[0-9]*$')]],
+      bDay: ['', [Validators.required, Validators.pattern('^[0-9]+(\\.[0-9]+){0,2}$')]],
       position: ['', Validators.required],
     });
   }
